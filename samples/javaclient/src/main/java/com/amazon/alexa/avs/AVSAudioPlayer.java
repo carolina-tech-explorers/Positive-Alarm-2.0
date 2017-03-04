@@ -849,6 +849,10 @@ public class AVSAudioPlayer {
                             if (Thread.interrupted()) {
                                 break;
                             }
+                            //This is the area we need to edit to play custom sounds
+                            //Either we create an audio file some way,
+                            //or we have pre-loaded mp3 files located in some res/positive-alarm directory,
+                            //and we pseudorandomly choose one of them
                             InputStream inpStream = resLoader.getResourceAsStream("res/alarm.mp3");
                             synchronized (playLock) {
                                 try {
