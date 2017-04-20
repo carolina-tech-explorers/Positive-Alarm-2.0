@@ -14,8 +14,8 @@
  * not need to modify those elements.
  */
 var config = {
-    clientId: '',
-    clientSecret: '',
+    clientId: 'amzn1.application-oa2-client.e2febcdd348b433ba62f58fa849ae147',
+    clientSecret: '4f8ae4a0889137c5c581308c03d42961e19bb4edf43ee9c86d6809686f453753',
     redirectUrl: 'https://localhost:3000/authresponse',
     lwaRedirectHost: 'amazon.com',
     lwaApiHost: 'api.amazon.com',
@@ -24,8 +24,9 @@ var config = {
     sslCert: '',
     sslCaCert: '',
     products: {
-        "": [""], // Fill in with valid device values, eg: "testdevice1": ["DSN1234", "DSN5678"]
+        "clock": ["ctech_raspberripi"], // Fill in with valid device values, eg: "testdevice1": ["DSN1234", "DSN5678"]
     },
 };
 
 module.exports = config;
+

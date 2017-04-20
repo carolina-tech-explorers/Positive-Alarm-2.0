@@ -7,7 +7,8 @@ console.log('This node service needs to be running to store token information me
  */
 var app = require('../app');
 var debug = require('debug')('companion:server');
-var https = require('https');
+//var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var config = require("../config");
 
@@ -17,6 +18,8 @@ var config = require("../config");
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+// Used for HTTPS, please use when launching the product
+/*
 var options = {
     key: fs.readFileSync(config.sslKey),
     cert: fs.readFileSync(config.sslCert),
@@ -24,11 +27,12 @@ var options = {
     requestCert: true,
     rejectUnauthorized: false,
 };
+*/
 
 /**
  * Create HTTP server.
  */
-var server = https.createServer(options, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
