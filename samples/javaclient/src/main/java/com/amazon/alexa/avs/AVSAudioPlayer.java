@@ -44,6 +44,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Random;
 
 import javazoom.jl.player.Player;
 import uk.co.caprica.vlcj.component.AudioMediaPlayerComponent;
@@ -849,7 +850,22 @@ public class AVSAudioPlayer {
                             if (Thread.interrupted()) {
                                 break;
                             }
-                            InputStream inpStream = resLoader.getResourceAsStream("res/alarm.mp3");
+                            //This is the area we need to edit to play custom sounds
+                            //Either we create an audio file some way,
+                            //or we have pre-loaded mp3 files located in some res/positive-alarm directory,
+                            //and we pseudorandomly choose one of them
+                            
+                            //Right now, the code is set to randomly select an mp3 file
+                            //from a small list in the res/phrases/audio directory
+                            File directory = new File("res/phrases/audio");
+                            File[] alarmSounds = directory.listFiles();
+                            Random r = new Random();
+                            int randomNumber = r.nextInt(alarmSounds.length);
+                            //Should not throw an IndexOutOfBoundsException because java
+                            //documentation states that the .nextInt() method returns
+                            //a value between 0 (inclusive) and the value inputted as the
+                            //argument (exclusive)
+                            InputStream inpStream = resLoader.getResourceAsStream("res/phrases/audio" + alarmSounds[randomNumber].toString());
                             synchronized (playLock) {
                                 try {
                                     play(inpStream);
